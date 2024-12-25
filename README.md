@@ -4,7 +4,7 @@ Productivito is productivity tool. Which helps you moniter and Anylise your pc u
 By graphs, Which can be catagorised by mothly or weekly uses.
 
 ### Current Known Bugs:
-- App does not store data when pc shutdowns.
+- App does not store data when pc shutdowns or under unexpected terminations. (Solved)
 - Make the database file be stored in some safe location.
 
 ### Improvment Thoughts:
