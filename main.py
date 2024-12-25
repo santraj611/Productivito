@@ -1,7 +1,7 @@
-import os
 import time
 import sqlite3
 from datetime import datetime
+import signal
 
 # Database setup
 def init_db():
@@ -25,7 +25,7 @@ def log_start_time():
     return start_time
 
 # Record end time and save to DB
-def log_end_time(start_time):
+def auto_save(start_time):
     end_time = datetime.now()
     duration_seconds = int((end_time - start_time).total_seconds())
     date = start_time.date()
@@ -38,18 +38,29 @@ def log_end_time(start_time):
     conn.commit()
     conn.close()
 
+# Catch termination signals
+def handle_exit(signum, frame):
+    print("Application is shutting down...")
+    auto_save(start_time)
+    print("Session logged.")
+    exit(0)
+
+
 if __name__ == "__main__":
     init_db()
+
+    signal.signal(signal.SIGTERM, handle_exit)  # Handle termination
+    signal.signal(signal.SIGINT, handle_exit)  # Handle keyboard interrupt
     
     print("PC Usage Tracker Running...")
     try:
         start_time = log_start_time()
         print(f"Start time logged: {start_time}")
         while True:
-            time.sleep(1)  # Simulate the app running
+            time.sleep(60)  # Check every minute to save data
+            auto_save(start_time)
     except KeyboardInterrupt:
         print("Shutting down tracker...")
-        log_end_time(start_time)
         print("Session logged.")
-        # generate_graph()
+        handle_exit(None, None)
 
