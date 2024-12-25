@@ -25,10 +25,10 @@ def generate_graph():
     plt.xlabel('Date')
     plt.ylabel('Usage Duration (hours)')
     plt.grid()
-    plt.show()
+    # plt.show()
 
     # Save the graph as an image
-    graph_path = "templates/static/usage_graph.png"
+    graph_path = "static/usage_graph.png"
     plt.savefig(graph_path)
     plt.close()
     return graph_path
