@@ -27,6 +27,13 @@ def generate_graph():
     plt.grid()
     plt.show()
 
+    # Save the graph as an image
+    graph_path = "templates/static/usage_graph.png"
+    plt.savefig(graph_path)
+    plt.close()
+    return graph_path
+
+
 # Generate weekly summary
 def generate_weekly_summary():
     conn = sqlite3.connect("pc_usage.db")

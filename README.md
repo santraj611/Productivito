@@ -15,6 +15,8 @@ By graphs, Which can be catagorised by mothly or weekly uses.
 For graphs you need `matplotlib`, Which can be installed using `pip3`
 ```
 pip3 install matplotlib
+pip3 install flask
+
 ```
 
 ### How to make it auto start at startup
