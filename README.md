@@ -1,7 +1,7 @@
 ### Productivito
 
 Productivito is productivity tool. Which helps you moniter and Anylise your pc uses and gives you insights
-By graps, Which can be catagorised by mothly or weekly uses.
+By graphs, Which can be catagorised by mothly or weekly uses.
 
 ### Current Known Bugs:
 - App does not store data when pc shutdowns.
