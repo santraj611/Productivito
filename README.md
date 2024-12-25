@@ -1,7 +1,7 @@
 ### Productivito
 
-Productivito is productivity tool. Which helps you moniter and Anylise your pc uses and gives you insights
-By graphs, Which can be catagorised by mothly or weekly uses.
+Productivito is productivity tool. Which helps you moniter and Analyse your pc uses and gives you insights
+By graphs, Which can be categorised by monthly or weekly uses.
 
 ### Current Known Bugs:
 - App does not store data when pc shutdowns or under unexpected terminations. (Solved)
@@ -9,6 +9,7 @@ By graphs, Which can be catagorised by mothly or weekly uses.
 
 ### Improvment Thoughts:
 - Desine GUI for it.
+- use ShadCNui
 - Make it Self-Hostable.
 
 ### Requiremants
@@ -35,3 +36,7 @@ Comment=PC Usage Tracker
 X-GNOME-Autostart-enabled=true
 ```
 Note: Make sure you replace `/path/to/your/script.py` with your location of script in your pc.
+Also note that you need to make the script executable.
+```
+chmod +x /path/to/script
+```

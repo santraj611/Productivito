@@ -33,7 +33,7 @@ def monthly_summary():
 
 @app.route("/graph")
 def graph():
-    graph_url = generate_graph()
+    graph_url = generate_graph() # Note: graph_url is just the path for the grap
     if not graph_url:
         return "No data available to generate a graph."
     return render_template("graph.html", graph_url=graph_url)
