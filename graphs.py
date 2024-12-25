@@ -53,5 +53,3 @@ def generate_monthly_summary():
     for row in data:
         print(f"Date: {row[0]}, Total Duration: {row[1] / 3600:.2f} hours")
 
-if __name__ == '__main__':
-
