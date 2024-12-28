@@ -4,7 +4,6 @@ Productivito is productivity tool. Which helps you moniter and Analyse your pc u
 By graphs, Which can be categorised by monthly or weekly uses.
 
 ### Current Known Bugs:
-- App does not store data when pc shutdowns or under unexpected terminations. (Solved)
 - Make the database file be stored in some safe location.
 
 ### Improvment Thoughts:
@@ -30,13 +29,18 @@ And then make a `Productivito.desktop` file for the Productivito app to make it 
 ```
 [Desktop Entry]
 Type=Application
-Exec=python3 /path/to/your/script.py
 Name=Productivito
+Exec=/bin/bash /path/to/your/autostart.sh
+Terminal=flase
 Comment=PC Usage Tracker
 X-GNOME-Autostart-enabled=true
 ```
-Note: Make sure you replace `/path/to/your/script.py` with your location of script in your pc.
+Note: Make sure you replace `/path/to/your/autostart.sh` with your location of script in your pc.
 Also note that you need to make the script executable.
 ```
 chmod +x /path/to/script
+```
+You can also create a link to `autostart.sh` file and make that run:
+```bash
+ln -s /path/to/autostart.sh ~/.config/autostart/
 ```
