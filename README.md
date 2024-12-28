@@ -7,6 +7,7 @@ By graphs, Which can be categorised by monthly or weekly uses.
 - Make the database file be stored in some safe location.
 
 ### Improvment Thoughts:
+- Dockerize it
 - Desine GUI for it.
 - use ShadCNui
 - Make it Self-Hostable.
@@ -16,6 +17,7 @@ For graphs you need `matplotlib`, Which can be installed using `pip3`
 ```
 pip3 install matplotlib
 pip3 install flask
+pip3 install psutil
 
 ```
 

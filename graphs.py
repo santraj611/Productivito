@@ -20,7 +20,8 @@ def generate_graph():
 
     # Plot
     plt.figure(figsize=(10, 5))
-    plt.plot(dates, durations, marker='o')
+    plt.bar(dates, durations, color="#80FFEC")
+    # plt.plot(dates, durations, marker='o')
     plt.title('PC Usage Over Time')
     plt.xlabel('Date')
     plt.ylabel('Usage Duration (hours)')
