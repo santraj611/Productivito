@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
+        <title>Productivito</title>
         <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     </head>
 
@@ -11,8 +11,21 @@
 
         <div class="wrapper">
 
-        <h1 class="title">Productivito</h1>
-        <h3 class="title_des">A PC Usage Tracker</h3>
+            <nav>
+                <div>
+                    <a href="/">
+                    <h1 class="title">Dashboard</h1>
+                    </a>
+                    <h3 class="title_des">A PC Usage Tracker</h3>
+                </div>
+
+            </nav>
+
+            <ul class="pages">
+                <li><a href="/graph">Graph Usage</a></li>
+                <li><a href="/weekly-summary">Weekly Graph Usage</a></li>
+                <li><a href="/monthly-summary">Monthly Graph Usage</a></li>
+            </ul>
 
         </div>
 

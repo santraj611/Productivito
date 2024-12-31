@@ -44,9 +44,33 @@ def generate_weekly_summary():
     data = cursor.fetchall()
     conn.close()
 
-    print("Weekly Summary:")
-    for row in data:
-        print(f"Date: {row[0]}, Total Duration: {row[1] / 3600:.2f} hours")
+    if not data:
+        print("No data available to plot.")
+        return
+
+    # Extract dates and durations
+    dates = [datetime.strptime(row[0], '%Y-%m-%d').date() for row in data]
+    durations = [row[1] / 3600 for row in data]  # Convert seconds to hours
+
+    # Plot
+    plt.figure(figsize=(10, 5))
+    plt.bar(dates, durations, color="#80FFEC")
+    # plt.plot(dates, durations, marker='o')
+    plt.title('PC Usage Over Week')
+    plt.xlabel('Date')
+    plt.ylabel('Usage Duration (hours)')
+    plt.grid()
+    # plt.show()
+
+    # Save the graph as an image
+    graph_path = "static/weekly_usage_graph.png"
+    plt.savefig(graph_path)
+    plt.close()
+    return graph_path
+
+    # print("Weekly Summary:")
+    # for row in data:
+    #     print(f"Date: {row[0]}, Total Duration: {row[1] / 3600:.2f} hours")
 
 # Generate monthly summary
 def generate_monthly_summary():
@@ -57,7 +81,31 @@ def generate_monthly_summary():
     data = cursor.fetchall()
     conn.close()
 
-    print("Monthly Summary:")
-    for row in data:
-        print(f"Date: {row[0]}, Total Duration: {row[1] / 3600:.2f} hours")
+    if not data:
+        print("No data available to plot.")
+        return
+
+    # Extract dates and durations
+    dates = [datetime.strptime(row[0], '%Y-%m-%d').date() for row in data]
+    durations = [row[1] / 3600 for row in data]  # Convert seconds to hours
+
+    # Plot
+    plt.figure(figsize=(10, 5))
+    plt.bar(dates, durations, color="#80FFEC")
+    # plt.plot(dates, durations, marker='o')
+    plt.title('PC Usage Over Month')
+    plt.xlabel('Date')
+    plt.ylabel('Usage Duration (hours)')
+    plt.grid()
+    # plt.show()
+
+    # Save the graph as an image
+    graph_path = "static/monthly_usage_graph.png"
+    plt.savefig(graph_path)
+    plt.close()
+    return graph_path
+
+    # print("Monthly Summary:")
+    # for row in data:
+    #     print(f"Date: {row[0]}, Total Duration: {row[1] / 3600:.2f} hours")
 

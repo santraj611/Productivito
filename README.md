@@ -7,7 +7,9 @@ By graphs, Which can be categorised by monthly or weekly uses.
 - Make the database file be stored in some safe location.
 
 ### Improvment Thoughts:
+- Update the graph page for total usage and today usage
 - Dockerize it
+- Make a logging machanism
 - Desine GUI for it.
 - use ShadCNui
 - Make it Self-Hostable.

@@ -93,13 +93,18 @@ if __name__ == "__main__":
         start_time = log_start_time()
         print(f"Start time logged: {start_time}")
         while True:
-            if is_user_active():
+
                 time.sleep(60)  # Check every minute to save data
                 auto_save(start_time)
-            else:
-                # User went offline...
-                time.sleep(60)
-                continue
+
+            # Intented code is not working as expected 
+            # if is_user_active():
+            #     time.sleep(60)  # Check every minute to save data
+            #     auto_save(start_time)
+            # else:
+            #     # User went offline...
+            #     time.sleep(60)
+            #     continue
 
     except KeyboardInterrupt:
         print("Shutting down tracker...")

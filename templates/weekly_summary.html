@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly PC Usage Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1 class="title">Weekly PC Usage Over Time</h1>
+    <img class="img_graph" src="{{ graph_url }}" alt="Weekly PC Usage Graph">
+    <a href="/">Back to Home</a>
+</body>
+</html>
+
