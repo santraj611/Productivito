@@ -90,21 +90,19 @@ if __name__ == "__main__":
     print("PC Usage Tracker Running...")
 
     try:
-        start_time = log_start_time()
-        print(f"Start time logged: {start_time}")
         while True:
-
-                time.sleep(60)  # Check every minute to save data
-                auto_save(start_time)
+            start_time = log_start_time() # starting timer every 10 minute
+            # time.sleep(600)  # Check every 10 minute to save data
+            auto_save(start_time)
 
             # Intented code is not working as expected 
-            # if is_user_active():
-            #     time.sleep(60)  # Check every minute to save data
-            #     auto_save(start_time)
-            # else:
-            #     # User went offline...
-            #     time.sleep(60)
-            #     continue
+            if is_user_active():
+                time.sleep(60)  # Check every minute to save data
+                auto_save(start_time)
+            else:
+                # User went offline...
+                time.sleep(60)
+                continue
 
     except KeyboardInterrupt:
         print("Shutting down tracker...")
