@@ -10,22 +10,34 @@
     <body>
 
         <div class="wrapper">
+            <header>
+                <nav>
+                    <div>
+                        <a href="/">
+                        <h1 class="title">Dashboard</h1>
+                        </a>
+                        <h3 class="title_des">A PC Usage Tracker</h3>
+                    </div>
+                </nav>
+            </header>
 
-            <nav>
-                <div>
-                    <a href="/">
-                    <h1 class="title">Dashboard</h1>
-                    </a>
-                    <h3 class="title_des">A PC Usage Tracker</h3>
+            <main>
+                <div class="data">
+                    <h3>Total Screen Time (Today) : {{ today_st }} Hours</h3>
+                    <h3>Total Screen Time (This Week) : {{ this_week }} Hours</h3>
+                    <h3>Total Screen Time (This Month) : {{ this_month }} Hours</h3>
                 </div>
 
-            </nav>
+                <div>
+                    <ul class="pages">
+                        <li><a href="/graph">Graph Usage</a></li>
+                        <li><a href="/weekly-summary">Weekly Graph Usage</a></li>
+                        <li><a href="/monthly-summary">Monthly Graph Usage</a></li>
+                    </ul>
+                    
+                </div>
+            </main>
 
-            <ul class="pages">
-                <li><a href="/graph">Graph Usage</a></li>
-                <li><a href="/weekly-summary">Weekly Graph Usage</a></li>
-                <li><a href="/monthly-summary">Monthly Graph Usage</a></li>
-            </ul>
 
         </div>
 
