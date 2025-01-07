@@ -1,10 +1,18 @@
+import os
 import sqlite3
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 
+# constant
+DATABASE_NAME = 'pc_usage.db'
+
+APP_DIR = os.path.expanduser("~/.local/state/Productivito/")
+DATABASE_DIR = os.path.join(APP_DIR, "database")
+DATABASE_FILE = os.path.join(DATABASE_DIR, DATABASE_NAME)
+
 # Generate usage graph
 def generate_graph():
-    conn = sqlite3.connect("pc_usage.db")
+    conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     cursor.execute("SELECT date, start_time, duration_seconds FROM usage_data")
     data = cursor.fetchall()
@@ -37,7 +45,7 @@ def generate_graph():
 
 # Generate weekly summary
 def generate_weekly_summary():
-    conn = sqlite3.connect("pc_usage.db")
+    conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     one_week_ago = datetime.now() - timedelta(days=7)
     cursor.execute("SELECT date, SUM(duration_seconds) FROM usage_data WHERE date >= ? GROUP BY date", (one_week_ago.date(),))
@@ -74,7 +82,7 @@ def generate_weekly_summary():
 
 # Generate monthly summary
 def generate_monthly_summary():
-    conn = sqlite3.connect("pc_usage.db")
+    conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     one_month_ago = datetime.now() - timedelta(days=30)
     cursor.execute("SELECT date, SUM(duration_seconds) FROM usage_data WHERE date >= ? GROUP BY date", (one_month_ago.date(),))

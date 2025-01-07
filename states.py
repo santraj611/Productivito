@@ -1,5 +1,13 @@
+import os
 import sqlite3
 from datetime import datetime, timedelta
+
+# constant
+DATABASE_NAME = 'pc_usage.db'
+
+APP_DIR = os.path.expanduser("~/.local/state/Productivito/")
+DATABASE_DIR = os.path.join(APP_DIR, "database")
+DATABASE_FILE = os.path.join(DATABASE_DIR, DATABASE_NAME)
 
 def get_date():
     """Return: date of today"""
@@ -30,7 +38,9 @@ def total_screen_time(day: str):
     Total usage: Float
     """
     try:
-        conn = sqlite3.connect("pc_usage.db")
+    # Create the application directory and database directory if they don't exist
+        os.makedirs(DATABASE_DIR, exist_ok=True)
+        conn = sqlite3.connect(DATABASE_FILE)
         cursor = conn.cursor()
         query = f"SELECT SUM(duration_seconds) FROM usage_data WHERE date >= ?"
 

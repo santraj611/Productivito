@@ -1,25 +1,45 @@
+import os
 import time
 import sqlite3
 from datetime import datetime
 import signal
 import psutil
 
+# constant
+DATABASE_NAME = 'pc_usage.db'
+
+APP_DIR = os.path.expanduser("~/.local/state/Productivito/")
+DATABASE_DIR = os.path.join(APP_DIR, "database")
+DATABASE_FILE = os.path.join(DATABASE_DIR, DATABASE_NAME)
+
 # Database setup
 def init_db():
     """Createrd or looks for Database"""
-    conn = sqlite3.connect("pc_usage.db")
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS usage_data (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            date DATE,
-            start_time DATETIME,
-            end_time DATETIME,
-            duration_seconds INTEGER
-        )
-    ''')
-    conn.commit()
-    conn.close()
+    try:
+    # Create the application directory and database directory if they don't exist
+        os.makedirs(DATABASE_DIR, exist_ok=True)
+        conn = sqlite3.connect(DATABASE_FILE)
+        cursor = conn.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS usage_data (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date DATE,
+                start_time DATETIME,
+                end_time DATETIME,
+                duration_seconds INTEGER
+            )
+        ''')
+        conn.commit()
+        conn.close()
+
+        if not DATABASE_FILE:
+            print(f"Database created at : {DATABASE_FILE}")
+
+    except OSError as e:
+        print(f"Error creating directories: {e}")
+    except sqlite3.Error as e:
+        print(f"Error creating database: {e}")
+        
 
 # Record start time
 def log_start_time():
@@ -33,7 +53,7 @@ def auto_save(start_time):
     end_time = datetime.now()
     duration_seconds = int((end_time - start_time).total_seconds())
     date = start_time.date()
-    conn = sqlite3.connect("pc_usage.db")
+    conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     cursor.execute(
         "INSERT INTO usage_data (date, start_time, end_time, duration_seconds) VALUES (?, ?, ?, ?)",
