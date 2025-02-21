@@ -149,7 +149,7 @@ def print_all_review_topics(when):
                     continue
         elif when == 'Past':
             for items in data:
-                if datetime.strptime(items[2], '%Y-%m-%d').date() < today:
+                if datetime.strptime(items[2], '%Y-%m-%d').date() <= today:
                     user_data.append(items)
         else:
             print("Something went wrong!")
